@@ -1,0 +1,7 @@
+.itemContainer {
+    width: 25%;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.342) ;
+    border-radius: 10px;
+    text-align: center;
+}
