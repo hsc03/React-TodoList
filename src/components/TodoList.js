@@ -1,10 +1,13 @@
-import React from "react";
-import TodoItem from "./TodoItem";
+import React from 'react';
+import '../styles/TodoList.css';
+import TodoItem from './TodoItem';
 
-const TodoList = () => {
+const TodoList = ({ todos }) => {
     return (
-        <div>
-            
+        <div className='todoListContainer'>
+            {todos.map(todo => (
+                <TodoItem key={todo.id} inputValue={todo.text} />
+            ))}
         </div>
     );
 };

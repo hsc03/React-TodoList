@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./styles/App.css";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './components/Header';
-import TodoItem from './components/TodoItem';
-// import TodoList from './components/TodoList';
+import TodoList from './components/TodoList';
 
 const App = () => {
+  const [todos, setTodos] = useState([]);
+
+  const addTodoItem = (item) => {
+    const newTodo = { id: Date.now(), text: item };
+    setTodos([...todos, newTodo]);
+  };
+
   return (
     <div className='app'>
-      <Header />
-      <TodoItem />
-      {/* <TodoList /> */}
+      <Header onAddItem={addTodoItem}/>
+      <TodoList todos={todos}/>
     </div>
   );
 }

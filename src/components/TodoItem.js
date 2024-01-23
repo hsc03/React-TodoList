@@ -2,16 +2,16 @@ import React from "react";
 import '../styles/TodoItem.css';
 import { Button } from 'react-bootstrap';
 
-const TodoItem = () => {
+const TodoItem = ({ inputValue }) => {
     return (
         <div className="itemContainer">
             <div className="text">
-                <span>테스트 중인 그저 그런 텍스트</span>
+                <span>{inputValue}</span>
             </div>
             <div className="buttons">
-                <Button variant="outline-danger">삭제</Button>
-                <Button variant="outline-warning">수정</Button>
-                <Button variant="outline-success">완료</Button>
+                <Button variant="outline-danger" size="sm">삭제</Button>
+                <Button variant="outline-warning" size="sm">수정</Button>
+                <Button variant="outline-success" size="sm">완료</Button>
             </div>
         </div>
     );
