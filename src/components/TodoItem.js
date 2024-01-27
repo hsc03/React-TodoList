@@ -2,38 +2,84 @@ import React, { useState } from "react";
 import '../styles/TodoItem.css';
 import { Button, Form } from 'react-bootstrap';
 
-const TodoItem = ({ inputValue }) => {
+const TodoItem = ({ inputValue, onDelete, onEdit, id }) => {
     const [isCompleted, setIsCompleted] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editText, setEditText] = useState(inputValue);
 
     const handleCompleteChange = (e) => {
         setIsCompleted(e.currentTarget.checked);
     };
-
-    const handleDelete = () => {
-        alert("삭제됩니다.(구현x)");
-    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        completeEdit();
+    };
 
     const handleEdit = () => {
-        alert("수정됩니다.(구현 x)");
-    }
+        setIsEditing(true);
+    };
+
+    const completeEdit = () => {
+        onEdit(id, editText);
+        setIsEditing(false);
+    };
+
+    const cancelEdit = () => {
+        setEditText(inputValue);
+        setIsEditing(false);
+    };
 
     return (
-        <div className="itemContainer"style={{ backgroundColor : isCompleted ? 'grey' : 'white'}}>
+        <div
+            className="itemContainer"
+            style={{ backgroundColor: isCompleted ? 'grey' : 'white' }}
+        >
             <div className="itemTop">
                 <div className="text">
-                    <span>{inputValue}</span>
+                    {isEditing ?
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Control
+                                type="text"
+                                value={editText}
+                                onChange={(e) => setEditText(e.target.value)} />
+                        </Form>
+                        : <span>
+                            {isCompleted ? inputValue + "     ✅" : inputValue}
+                        </span>}
                 </div>
-                <Form.Check 
-                    type="switch"
-                    id={`complete-switch-${inputValue}`}
-                    label=""
-                    checked={isCompleted}
-                    onChange={handleCompleteChange}
-                />
+                {isEditing ?
+                    <Form.Check
+                        disabled
+                        className="switch"
+                        type="switch"
+                        id={`complete-switch-${inputValue}`}
+                        checked={isCompleted}
+                        onChange={handleCompleteChange}
+                    /> : <Form.Check
+                        className="switch"
+                        type="switch"
+                        id={`complete-switch-${inputValue}`}
+                        checked={isCompleted}
+                        onChange={handleCompleteChange}
+                    />}
             </div>
             <div className="itemBottom">
-                <Button variant="outline-danger" onClick={handleDelete}>삭제</Button>
-                <Button variant="outline-warning" disabled={isCompleted} onClick={handleEdit}>수정</Button>
+                {isEditing ?
+                    <Button
+                        variant="outline-danger"
+                        onClick={cancelEdit}>취소</Button>
+                    : <Button
+                        variant="outline-danger"
+                        onClick={onDelete}>삭제</Button>}
+                {isEditing ?
+                    <Button
+                        variant="outline-success"
+                        onClick={completeEdit}>저장</Button>
+                    : <Button
+                        variant="outline-warning"
+                        disabled={isCompleted}
+                        onClick={handleEdit}>수정</Button>}
             </div>
         </div>
     );

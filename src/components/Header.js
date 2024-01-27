@@ -3,7 +3,7 @@ import '../styles/Header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
 
-const Header = ({ onAddItem }) => {
+const Header = ({ onAdd }) => {
     const [inputValue, setInputValue] = useState('');
     const [validated, setValidated] = useState(false);
 
@@ -19,7 +19,7 @@ const Header = ({ onAddItem }) => {
             setValidated(true);
         } else {
             setValidated(false);
-            onAddItem(inputValue);
+            onAdd(inputValue);
             setInputValue('');
         }
     };

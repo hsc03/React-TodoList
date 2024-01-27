@@ -1,8 +1,4 @@
 .todoListContainer {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 23px;
-    padding: 0 10px;
-    margin-left: 20px;
+    width: 100%;
+    padding: 10px;
 }

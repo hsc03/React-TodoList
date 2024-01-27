@@ -1,15 +1,12 @@
 .itemContainer {
-    width: 23%;
-    height: 7rem;
     background-color: white;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.342) ;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.342);
     border-radius: 10px;
     text-align: center;
-    margin-left: 10px;
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 15px;
 }
 
 .itemTop {
@@ -25,6 +22,7 @@
 }
 
 .itemBottom Button {
+    margin: 5px;
     width: 150px;
     justify-content: space-around;
 }
