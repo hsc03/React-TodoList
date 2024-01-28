@@ -20,8 +20,8 @@ https://github.com/hsc03/React-TodoList/assets/80443990/7700690f-fd97-4f27-91df-
 ---
 
  ### :gear: 설치
-1. [React](https://react.dev/learn) 설치
-2. 해당 저장소를 clone 후 아래 코드 입력
+1. [React](https://react.dev/learn) 설치하세요.
+2. 해당 저장소를 clone 후 아래 코드 입력하세요.
 ```
 cd React-TodoList
 npm install
